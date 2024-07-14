@@ -57,7 +57,7 @@ public class EnemyChase : MonoBehaviour
     {
         while (isPlayerInTrigger)
         {
-            PlayerStats.Instance.TakeDamage(1);
+            PlayerStats.Instance.TakeDamage(1f);
             yield return new WaitForSeconds(1);
         }
     }

@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public delegate void OnHealthChangedDelegate();
+
+    public GameOver gameOver;
     public OnHealthChangedDelegate onHealthChangedCallback;
 
     #region Sigleton
@@ -44,10 +46,14 @@ public class PlayerStats : MonoBehaviour
         health -= dmg;
         ClampHealth();
 
-        if (health <= 0);
+        if (health <= 0)
         {
-            GameOver.Instance.OnDeath();
-
+            gameOver.OnDeath();
+            Debug.Log ("On Death is called");
+        }
+        else
+        {
+            Debug.Log ("Health is above 0");
         }
     }
 
