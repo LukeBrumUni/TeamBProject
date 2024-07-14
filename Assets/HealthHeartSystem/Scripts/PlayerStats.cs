@@ -43,6 +43,12 @@ public class PlayerStats : MonoBehaviour
     {
         health -= dmg;
         ClampHealth();
+
+        if (health <= 0);
+        {
+            GameOver.Instance.OnDeath();
+
+        }
     }
 
     public void AddHealth()
