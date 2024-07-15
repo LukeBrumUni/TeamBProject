@@ -31,6 +31,8 @@ namespace WeaponSystem {
         public bool overrideGunScriptGunObject;
         [HideInInspector] public GunObject gunObjectOverride;
 
+        
+
         //Override the selected gunObject if applicable
         private void Awake() {
             if (gunScript != null && overrideGunScriptGunObject == true && gunObjectOverride != null) {
@@ -49,6 +51,7 @@ namespace WeaponSystem {
                 Debug.LogWarning("PlayerMovementScript did not have an assigned cameraFollowScript. Attempting to find suitable replacement.");
                 cameraFollowScript = FindFirstObjectByType<CameraFollowScript>();
             }
+            
         }
 
         private void Update() {

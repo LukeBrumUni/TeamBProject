@@ -12,6 +12,11 @@ public class EnemyChase : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     
     private bool isPlayerInTrigger;
+
+    public float damageCooldown = 1f; // 1 second cooldown
+    private bool isInvulnerable = false;
+
+    public float baseEnemyDamage = 0.5f;
     
     
     // Start is called before the first frame update
@@ -26,8 +31,7 @@ public class EnemyChase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
+        
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         
@@ -39,8 +43,11 @@ public class EnemyChase : MonoBehaviour
     {
         if (other.gameObject == player)
         {
+            if(isInvulnerable == false)
+            {
             isPlayerInTrigger = true;
             StartCoroutine(DamagePlayerOverTime());
+            }
         }
     }
 
@@ -49,17 +56,19 @@ public class EnemyChase : MonoBehaviour
         if (other.gameObject == player)
         {
             isPlayerInTrigger = false;
+            // isInvulnerable = false;
             StopCoroutine(DamagePlayerOverTime());
         }
     }   
   
     IEnumerator DamagePlayerOverTime()
     {
-        while (isPlayerInTrigger)
+        while (isPlayerInTrigger) // original is a while statement
         {
-            PlayerStats.Instance.TakeDamage(1f);
-            yield return new WaitForSeconds(1);
+            PlayerStats.Instance.TakeDamage(baseEnemyDamage);
+            yield return new WaitForSeconds(damageCooldown); 
         }
+        
     }
     
 }

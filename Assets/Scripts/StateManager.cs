@@ -5,13 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour
 {
+
+    public GameObject pauseMenuUI;
+    public bool isPaused = false;
+
     public void ReloadCurrentScene()
     {
+        Time.timeScale = 1.0f;
+        isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void ExitApplication()
     {
         Application.Quit();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+     public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
     }
 }
