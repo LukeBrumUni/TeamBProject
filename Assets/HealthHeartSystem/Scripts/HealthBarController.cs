@@ -16,10 +16,10 @@ public class HealthBarController : MonoBehaviour
     private void Start()
     {
         // Should I use lists? Maybe :)
-        heartContainers = new GameObject[(int)PlayerStats.Instance.MaxTotalHealth];
-        heartFills = new Image[(int)PlayerStats.Instance.MaxTotalHealth];
+        heartContainers = new GameObject[(int)TestPlayerStats.Instance.MaxTotalHealth];
+        heartFills = new Image[(int)TestPlayerStats.Instance.MaxTotalHealth];
 
-        PlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
+        TestPlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
         InstantiateHeartContainers();
         UpdateHeartsHUD();
     }
@@ -34,7 +34,7 @@ public class HealthBarController : MonoBehaviour
     {
         for (int i = 0; i < heartContainers.Length; i++)
         {
-            if (i < PlayerStats.Instance.MaxHealth)
+            if (i < TestPlayerStats.Instance.MaxHealth)
             {
                 heartContainers[i].SetActive(true);
             }
@@ -49,7 +49,7 @@ public class HealthBarController : MonoBehaviour
     {
         for (int i = 0; i < heartFills.Length; i++)
         {
-            if (i < PlayerStats.Instance.Health)
+            if (i < TestPlayerStats.Instance.Health)
             {
                 heartFills[i].fillAmount = 1;
             }
@@ -59,16 +59,16 @@ public class HealthBarController : MonoBehaviour
             }
         }
 
-        if (PlayerStats.Instance.Health % 1 != 0)
+        if (TestPlayerStats.Instance.Health % 1 != 0)
         {
-            int lastPos = Mathf.FloorToInt(PlayerStats.Instance.Health);
-            heartFills[lastPos].fillAmount = PlayerStats.Instance.Health % 1;
+            int lastPos = Mathf.FloorToInt(TestPlayerStats.Instance.Health);
+            heartFills[lastPos].fillAmount = TestPlayerStats.Instance.Health % 1;
         }
     }
 
     void InstantiateHeartContainers()
     {
-        for (int i = 0; i < PlayerStats.Instance.MaxTotalHealth; i++)
+        for (int i = 0; i < TestPlayerStats.Instance.MaxTotalHealth; i++)
         {
             GameObject temp = Instantiate(heartContainerPrefab);
             temp.transform.SetParent(heartsParent, false);
