@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDir.x != 0 && moveDir.y != 0)
         {
-            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);    //While moving
+            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);  //While moving
         }
     }
 

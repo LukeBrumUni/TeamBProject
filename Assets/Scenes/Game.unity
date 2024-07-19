@@ -1351,13 +1351,13 @@ PrefabInstance:
       addedObject: {fileID: 1874783234}
     - targetCorrespondingSourceObject: {fileID: 3396188502924133989, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3396188503261769298}
-    - targetCorrespondingSourceObject: {fileID: 3396188502924133989, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3396188503261769297}
     - targetCorrespondingSourceObject: {fileID: 3396188502924133989, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3396188503261769299}
+    - targetCorrespondingSourceObject: {fileID: 3396188502924133989, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3396188503261769300}
   m_SourcePrefab: {fileID: 100100000, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
 --- !u!1 &894632863
 GameObject:
@@ -1388,10 +1388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0b64c0b1dccc64d91eee52d85267bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOver: {fileID: 920530238}
-  health: 5
-  maxHealth: 5
-  maxTotalHealth: 30
 --- !u!4 &894632865
 Transform:
   m_ObjectHideFlags: 0
@@ -1437,8 +1433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948a28f25365ea34d9bacce802138520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
-  deathPanel: {fileID: 1562229876}
 --- !u!4 &920530239
 Transform:
   m_ObjectHideFlags: 0
@@ -1632,6 +1626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863501bdc8adcd34e9963517a3982b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penetrationLevel: 0
+  useAudio: 0
+  audioSource: {fileID: 0}
 --- !u!61 &959539846
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1775,6 +1772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863501bdc8adcd34e9963517a3982b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penetrationLevel: 0
+  useAudio: 0
+  audioSource: {fileID: 0}
 --- !u!61 &1056085213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2670,6 +2670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863501bdc8adcd34e9963517a3982b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penetrationLevel: 0
+  useAudio: 0
+  audioSource: {fileID: 0}
 --- !u!1 &1637775660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,6 +3255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863501bdc8adcd34e9963517a3982b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  penetrationLevel: 0
+  useAudio: 0
+  audioSource: {fileID: 0}
 --- !u!61 &1990817127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3711,22 +3717,6 @@ MonoBehaviour:
   spawnedWeapons: []
   gameOver: {fileID: 0}
   invincibilityDuration: 1
---- !u!114 &3396188503261769298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396188503261769293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4529dedc1abb5bc43bee2b07c6a81dae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDir: {x: 0, y: 0}
-  lastHorizontalVector: 0
-  lastVerticalVector: 0
-  lastMovedVector: {x: 0, y: 0}
 --- !u!212 &3396188503261769299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3779,6 +3769,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3396188503261769300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396188503261769293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09583ec5feef50d49a9b4769dfdebd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDir: {x: 0, y: 0}
+  lastHorizontalVector: 0
+  lastVerticalVector: 0
+  lastMovedVector: {x: 0, y: 0}
 --- !u!1001 &7559661398158143377
 PrefabInstance:
   m_ObjectHideFlags: 0
