@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float lastVerticalVector;
     [HideInInspector]
     public Vector2 lastMovedVector;
+    private SpriteRenderer spriteRenderer;
 
     //References
     Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
         lastMovedVector = new Vector2(1, 0f); //If we don't do this and game starts up and don't move, the projectile weapon will have no momentum
@@ -64,4 +66,5 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(moveDir.x * player.currentMoveSpeed, moveDir.y * player.currentMoveSpeed);
     }
+
 }

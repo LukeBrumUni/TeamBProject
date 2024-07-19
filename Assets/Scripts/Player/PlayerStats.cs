@@ -24,6 +24,19 @@ public class PlayerStats : MonoBehaviour
 
     public GameOver gameOver;
 
+     public delegate void OnHealthChangedDelegate();
+     public OnHealthChangedDelegate onHealthChangedCallback;
+
+    private static PlayerStats instance;
+    public static PlayerStats Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = FindObjectOfType<PlayerStats>();
+            return instance;
+        }
+    }
 
     //I-Frames
     [Header("I-Frames")]
@@ -47,6 +60,8 @@ public class PlayerStats : MonoBehaviour
         //Spawn the starting weapon
         SpawnWeapon(characterData.StartingWeapon);
     }
+    
+    
 
 
     void Update()
@@ -101,6 +116,11 @@ public class PlayerStats : MonoBehaviour
                 currentHealth = characterData.MaxHealth;
             }
         }
+    }
+
+    public float MaxHealth
+    {
+       get { return characterData.MaxHealth; }
     }
 
     void Recover()

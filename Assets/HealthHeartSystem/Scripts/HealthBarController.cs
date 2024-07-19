@@ -16,10 +16,13 @@ public class HealthBarController : MonoBehaviour
     private void Start()
     {
         // Should I use lists? Maybe :)
-        heartContainers = new GameObject[(int)TestPlayerStats.Instance.MaxTotalHealth];
-        heartFills = new Image[(int)TestPlayerStats.Instance.MaxTotalHealth];
+       // old code - heartContainers = new GameObject[(int)TestPlayerStats.Instance.MaxTotalHealth];
+       // old code - heartFills = new Image[(int)TestPlayerStats.Instance.MaxTotalHealth];
 
-        TestPlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
+       heartContainers = new GameObject[(int)PlayerStats.Instance.MaxHealth];
+       heartFills = new Image[(int)PlayerStats.Instance.MaxHealth]; // possibly use the max health variable
+
+        PlayerStats.Instance.onHealthChangedCallback += UpdateHeartsHUD;
         InstantiateHeartContainers();
         UpdateHeartsHUD();
     }
@@ -34,7 +37,7 @@ public class HealthBarController : MonoBehaviour
     {
         for (int i = 0; i < heartContainers.Length; i++)
         {
-            if (i < TestPlayerStats.Instance.MaxHealth)
+            if (i < PlayerStats.Instance.MaxHealth)
             {
                 heartContainers[i].SetActive(true);
             }
@@ -49,7 +52,7 @@ public class HealthBarController : MonoBehaviour
     {
         for (int i = 0; i < heartFills.Length; i++)
         {
-            if (i < TestPlayerStats.Instance.Health)
+            if (i < PlayerStats.Instance.currentHealth)
             {
                 heartFills[i].fillAmount = 1;
             }
@@ -59,10 +62,10 @@ public class HealthBarController : MonoBehaviour
             }
         }
 
-        if (TestPlayerStats.Instance.Health % 1 != 0)
+        if (PlayerStats.Instance.currentHealth % 1 != 0)
         {
-            int lastPos = Mathf.FloorToInt(TestPlayerStats.Instance.Health);
-            heartFills[lastPos].fillAmount = TestPlayerStats.Instance.Health % 1;
+            int lastPos = Mathf.FloorToInt(PlayerStats.Instance.currentHealth);
+            heartFills[lastPos].fillAmount = PlayerStats.Instance.currentHealth % 1;
         }
     }
 
