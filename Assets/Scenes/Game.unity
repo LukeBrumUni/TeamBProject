@@ -1369,37 +1369,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3396188503261769300}
   m_SourcePrefab: {fileID: 100100000, guid: 6ee985855d6a44c4ea6706a5ee582ef1, type: 3}
---- !u!1 &894632863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 894632865}
-  m_Layer: 0
-  m_Name: TestPlayerStats
-  m_TagString: PlayerStats
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &894632865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894632863}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920530237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1861476095}
   - component: {fileID: 1861476094}
+  - component: {fileID: 1861476096}
   m_Layer: 0
   m_Name: HealthBarController
   m_TagString: Untagged
@@ -3148,6 +3118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0f78e4acfe21a4594760304164796e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartContainers: []
+  heartFills: []
   heartsParent: {fileID: 1115408670}
   heartContainerPrefab: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
 --- !u!4 &1861476095
@@ -3165,6 +3137,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1861476096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861476093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1caf00a65d973a745a5d8e2b47b84250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 1921734452}
+  playerStats: {fileID: 3396188503261769297}
 --- !u!1 &1863419934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,7 +3163,7 @@ GameObject:
   - component: {fileID: 1863419935}
   m_Layer: 0
   m_Name: WaveSpawner
-  m_TagString: Untagged
+  m_TagString: WaveSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3260,7 +3246,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07138324, y: -0.7512233}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3271,7 +3257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2107506, y: 2.5568347}
   m_EdgeRadius: 0
 --- !u!50 &1874783234
 Rigidbody2D:
@@ -4186,7 +4172,6 @@ SceneRoots:
   - {fileID: 1879536489}
   - {fileID: 7559661398158143377}
   - {fileID: 1861476095}
-  - {fileID: 894632865}
   - {fileID: 874637352}
   - {fileID: 1637775662}
   - {fileID: 1619633661}

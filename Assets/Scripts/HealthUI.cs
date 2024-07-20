@@ -10,23 +10,31 @@ public class HealthUI : MonoBehaviour
     public TMP_Text healthText;
 
     [SerializeField] 
-    PlayerStats playerStats;
+    private PlayerStats playerStats;
     
-    float health;
-
     void Start()
+    {
+        if (playerStats == null)
         {
-                playerStats = GetComponent<PlayerStats>();
-                healthText = GetComponent<TMP_Text>();
+            playerStats = GetComponent<PlayerStats>();
         }
 
-     void Update()
+        if (healthText == null)
         {
-               healthText.text = "Health:" + playerStats.currentHealth;
-               
-               if(playerStats.currentHealth <= 0)
-                {
-                  Destroy(gameObject);
-                }
+            healthText = GetComponent<TMP_Text>();
         }
+    }
+
+    void Update()
+    {
+        if (playerStats != null && healthText != null)
+        {
+            healthText.text = "Health: " + playerStats.currentHealth;
+
+            if (playerStats.currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

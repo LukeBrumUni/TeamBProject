@@ -1,6 +1,7 @@
 ﻿/*
+
  *  Author: ariel oliveira [o.arielg@gmail.com]
- */
+
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -80,3 +81,4 @@ public class HealthBarController : MonoBehaviour
         }
     }
 }
+*/
