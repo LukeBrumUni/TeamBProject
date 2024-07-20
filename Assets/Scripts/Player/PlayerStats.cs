@@ -123,6 +123,7 @@ public class PlayerStats : MonoBehaviour
        get { return characterData.MaxHealth; }
     }
 
+
     void Recover()
     {
         if(currentHealth < characterData.MaxHealth)
