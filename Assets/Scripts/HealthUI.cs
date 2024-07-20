@@ -11,9 +11,14 @@ public class HealthUI : MonoBehaviour
 
     [SerializeField] 
     private PlayerStats playerStats;
+
+    private float clampedHealth;
     
     void Start()
     {
+
+        
+
         if (playerStats == null)
         {
             playerStats = GetComponent<PlayerStats>();
@@ -27,11 +32,13 @@ public class HealthUI : MonoBehaviour
 
     void Update()
     {
+        clampedHealth = Mathf.Ceil(playerStats.currentHealth);
+
         if (playerStats != null && healthText != null)
         {
-            healthText.text = "Health: " + playerStats.currentHealth;
+            healthText.text = "Health: " + clampedHealth;
 
-            if (playerStats.currentHealth <= 0)
+            if (clampedHealth <= 0)
             {
                 Destroy(gameObject);
             }
