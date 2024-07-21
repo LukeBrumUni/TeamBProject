@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
 
     void InputManagement()
     {
+        if (StateManager.instance.isGameOver || StateManager.instance.currentState == StateManager.GameState.Paused)
+        {
+            return;
+        }
+
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -64,7 +69,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
+        if (StateManager.instance.isGameOver)
+        {
+            return;
+        }
+
         rb.velocity = new Vector2(moveDir.x * player.currentMoveSpeed, moveDir.y * player.currentMoveSpeed);
     }
-
 }

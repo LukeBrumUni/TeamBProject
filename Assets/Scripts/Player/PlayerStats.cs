@@ -6,6 +6,8 @@ public class PlayerStats : MonoBehaviour
 {
     CharacterScriptableObject characterData;
 
+    private Color originalColor; // test
+    public SpriteRenderer spriteRenderer; //TEST
     //Current stats
     [HideInInspector]
     public float currentHealth;
@@ -21,9 +23,6 @@ public class PlayerStats : MonoBehaviour
 
     //Spawned Weapon
     public List<GameObject> spawnedWeapons;
-
-    public GameOver gameOver;
-
      public delegate void OnHealthChangedDelegate();
      public OnHealthChangedDelegate onHealthChangedCallback;
 
@@ -43,12 +42,13 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityDuration;
     float invincibilityTimer;
     bool isInvincible;
+    public Color flashColor = Color.blue; // colour to flash when invinc //TEST
+    public float flashDuration = 1.7f; //TEST
 
     void Awake()
     {
         characterData = CharacterSelector.GetData();
         CharacterSelector.instance.DestroySingleton();
-
 
         //Assign the variables
         currentHealth = characterData.MaxHealth;
@@ -60,14 +60,17 @@ public class PlayerStats : MonoBehaviour
         //Spawn the starting weapon
         SpawnWeapon(characterData.StartingWeapon);
     }
-    
-    
 
+    void Start()
+    {
+        originalColor = spriteRenderer.color; //TEST
+    }
 
     void Update()
     {
         if (invincibilityTimer > 0)
         {
+            StartCoroutine(FlashBlue()); //TEST
             invincibilityTimer -= Time.deltaTime;
         }
         //If the invincibility timer has reached 0, set the invincibility flag to false
@@ -92,6 +95,7 @@ public class PlayerStats : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                SFXManager.instance.PlayDeathSFX(); //TESTEST
                 Kill();
             }
         }
@@ -99,8 +103,10 @@ public class PlayerStats : MonoBehaviour
 
     public void Kill()
     {
-        gameOver.OnDeath();
-        Debug.Log("PLAYER IS DEAD");
+        if(!StateManager.instance.isGameOver)
+        {
+            StateManager.instance.GameOver();
+        }
     }
 
     public void RestoreHealth(float amount)
@@ -144,5 +150,15 @@ public class PlayerStats : MonoBehaviour
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);    //Set the weapon to be a child of the player
         spawnedWeapons.Add(spawnedWeapon);  //Add it to the list of spawned weapons
+    }
+
+
+    private IEnumerator FlashBlue() //TEST
+    {
+        spriteRenderer.color = flashColor;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        spriteRenderer.color = originalColor;
     }
 }

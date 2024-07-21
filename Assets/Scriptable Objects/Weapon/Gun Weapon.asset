@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3e748fe12d1974facdbd62c3262c40, type: 3}
   m_Name: Gun Weapon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6797986928883484610, guid: 6809075a93add574099ab93aeeee1975, type: 3}
+  prefab: {fileID: 5100903040808536791, guid: ef34eb6f36e1a114eb2515e9dde39b85, type: 3}
   damage: 10
   speed: 10
   cooldownDuration: 2
-  pierce: 0
+  pierce: 1

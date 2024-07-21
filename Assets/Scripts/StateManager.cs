@@ -2,12 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class StateManager : MonoBehaviour
 {
 
-    public GameObject pauseMenuUI;
+    public static StateManager instance;
+
+    public enum GameState
+    {
+        Playing,
+        Paused,
+        GameOver
+    }
     public bool isPaused = false;
+    public bool isGameOver = false;
+    public GameState currentState;
+    public GameState previousState; //just stores the game state b4 pause
+
+    [Header("UI")]
+    public GameObject pauseScreen;
+    public GameObject gameoverScreen;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DisableScreens(); //keep this for gameover screen in final product, but needs to be fixed cus dontdestroyonload is bad
+    }
 
     public void ReloadCurrentScene()
     {
@@ -22,13 +52,61 @@ public class StateManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ChangeState(GameState newState)
+    {
+        currentState = newState;
+    }
+
     void Update()
+    {
+        switch (currentState)
+        {
+            case GameState.Playing:
+                CheckForPauseAndResume();
+                break;
+            case GameState.Paused:
+                CheckForPauseAndResume();
+                break;
+            case GameState.GameOver:
+                if (!isGameOver)
+                {
+                isGameOver = true;
+                gameoverScreen.SetActive(true);
+                ChangeState(GameState.GameOver);
+                Time.timeScale = 0f;
+                }
+                break;
+        }
+    }  
+
+    public void ResumeGame()
+    {
+        if (currentState == GameState.Paused)
+        {
+            ChangeState(previousState);
+            Time.timeScale = 1f;
+            pauseScreen.SetActive(false);
+        }
+    }
+
+    public void Pause()
+    {
+        if (currentState != GameState.Paused)
+        {
+            previousState = currentState;
+            currentState = GameState.Paused;
+            Time.timeScale = 0f;
+            pauseScreen.SetActive(true);
+        }
+    }
+
+    void CheckForPauseAndResume()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (currentState == GameState.Paused)
             {
-                Resume();
+                ResumeGame();
             }
             else
             {
@@ -37,17 +115,15 @@ public class StateManager : MonoBehaviour
         }
     }
 
-     public void Resume()
+    void DisableScreens()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
+        pauseScreen.SetActive(false);
+        gameoverScreen.SetActive(false);
 
-    public void Pause()
+    }
+    public void GameOver()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
+        gameoverScreen.SetActive(true);
+        ChangeState(GameState.GameOver);
     }
 }

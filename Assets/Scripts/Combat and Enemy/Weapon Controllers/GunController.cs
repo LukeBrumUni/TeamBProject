@@ -13,6 +13,7 @@ public class GunController : WeaponController
     protected override void Attack()
     {
         base.Attack();
+        SFXManager.instance.PlayGunSFX(); //TEST FOR GUN
         GameObject spawnedGun = Instantiate(weaponData.Prefab);
         spawnedGun.transform.position = transform.position; //same pos as player object
         spawnedGun.GetComponent<GunBehaviour>().DirectionChecker(pm.lastMovedVector); // Use the property
