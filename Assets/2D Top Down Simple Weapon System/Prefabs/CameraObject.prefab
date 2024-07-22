@@ -49,7 +49,9 @@ MonoBehaviour:
   playerCamera: {fileID: 8091062099408454631}
   useCameraShake: 0
   cameraSmoothTime: 0.3
-  cameraDistance: 7.5
+  cameraDistance: 5
+  explosionCameraShake: 0
+  cameraShakeIntensity: 1
   playerObject: {fileID: 0}
 --- !u!1 &7972306760103963679
 GameObject:
