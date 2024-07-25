@@ -126,4 +126,5 @@ public class StateManager : MonoBehaviour
         gameoverScreen.SetActive(true);
         ChangeState(GameState.GameOver);
     }
+
 }

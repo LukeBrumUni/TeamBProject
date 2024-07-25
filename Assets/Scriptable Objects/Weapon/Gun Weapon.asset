@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun Weapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 5100903040808536791, guid: ef34eb6f36e1a114eb2515e9dde39b85, type: 3}
-  damage: 10
-  speed: 10
-  cooldownDuration: 2
+  damage: 8
+  speed: 12
+  cooldownDuration: 0.5
   pierce: 1

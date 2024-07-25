@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0f72f2ddf0a8d448edefdefb9c475e, type: 3}
   m_Name: Tank Enemy
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  maxHealth: 100
+  moveSpeed: 2
+  maxHealth: 80
   damage: 40
