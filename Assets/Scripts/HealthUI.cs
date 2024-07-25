@@ -13,6 +13,8 @@ public class HealthUI : MonoBehaviour
     private PlayerStats playerStats;
 
     private float clampedHealth;
+
+    public Slider sliderHealth;
     
     void Start()
     {
@@ -37,6 +39,8 @@ public class HealthUI : MonoBehaviour
         if (playerStats != null && healthText != null)
         {
             healthText.text = "Health: " + clampedHealth;
+
+            sliderHealth.value = Mathf.Ceil(playerStats.currentHealth);
 
             if (clampedHealth <= 0)
             {
