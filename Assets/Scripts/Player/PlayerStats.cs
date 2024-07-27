@@ -44,6 +44,10 @@ public class PlayerStats : MonoBehaviour
     bool isInvincible;
     public Color flashColor = Color.blue; // colour to flash when invinc //TEST
     public float flashDuration = 1.7f; //TEST
+    public float recoveryDelay = 10f;
+    public float recoveryRate = 1f;
+    private bool isDamaged = false;
+    private Coroutine recoveryCoroutine;
 
     void Awake()
     {
@@ -79,7 +83,32 @@ public class PlayerStats : MonoBehaviour
             isInvincible = false;
         }
 
-        Recover();
+        if(isDamaged) // If damaged, then start recovering health after a short delay
+        {
+            if(recoveryCoroutine != null)
+            {
+                StopCoroutine(recoveryCoroutine);
+            }
+            recoveryCoroutine = StartCoroutine(RecoverHealthAfterDelay());
+            isDamaged = false;
+        }
+
+        // Recover();
+    }
+
+    IEnumerator RecoverHealthAfterDelay()
+    {
+        yield return new WaitForSeconds(recoveryDelay);
+
+        while (currentHealth < characterData.MaxHealth && currentHealth <= 50)
+        {
+            currentHealth += recoveryRate;
+             if (currentHealth > characterData.MaxHealth)
+            {
+                currentHealth = characterData.MaxHealth;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
 
@@ -98,6 +127,7 @@ public class PlayerStats : MonoBehaviour
                 SFXManager.instance.PlayDeathSFX(); //TESTEST
                 Kill();
             }
+            isDamaged = true;
         }
     }
 

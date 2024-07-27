@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+
 
     //CURRENT stats
     float currentMoveSpeed;
@@ -32,7 +34,14 @@ public class EnemyStats : MonoBehaviour
     public void Kill()
     {
         Destroy(gameObject);
+
+        if(currentHealth == 0)
+        {
+            OnDied.Invoke();
+        }
     }
+
+    public UnityEvent OnDied;
 
     private void OnCollisionStay2D (Collision2D col)
     {

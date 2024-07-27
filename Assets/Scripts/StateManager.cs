@@ -100,6 +100,7 @@ public class StateManager : MonoBehaviour
         }
     }
 
+
     void CheckForPauseAndResume()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

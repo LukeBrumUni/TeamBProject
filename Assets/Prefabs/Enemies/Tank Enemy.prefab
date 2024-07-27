@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8783521292563475927}
   - component: {fileID: 7717041526799494180}
   - component: {fileID: 1254165346988589392}
+  - component: {fileID: 4334371414383755801}
   m_Layer: 0
   m_Name: Tank Enemy
   m_TagString: Enemy
@@ -103,6 +104,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 3de71c419acff7d44988484759c11cfd, type: 2}
+  OnDied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4334371414383755801}
+        m_TargetAssemblyTypeName: EnemyHealthDrop, Assembly-CSharp
+        m_MethodName: RandomlyDropHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!61 &5224449406707630876
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -221,3 +237,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4334371414383755801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223032597741929365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87e4bbacf218f94a9b4b8b69a97d3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfHealthDrop: 0.25

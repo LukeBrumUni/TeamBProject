@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0f72f2ddf0a8d448edefdefb9c475e, type: 3}
   m_Name: Fodder Enemy
   m_EditorClassIdentifier: 
-  moveSpeed: 3.6
+  moveSpeed: 4.8
   maxHealth: 20
   damage: 10
