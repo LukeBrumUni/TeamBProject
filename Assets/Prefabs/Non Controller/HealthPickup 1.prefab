@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7715552714786362134}
   - component: {fileID: 1986714303676080821}
   - component: {fileID: 7394743303431501052}
+  - component: {fileID: 7872677421381167144}
   m_Layer: 0
   m_Name: HealthPickup 1
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.23, y: -3.15, z: 0}
-  m_LocalScale: {x: 3.9486, y: 3.9486, z: 3.9486}
+  m_LocalScale: {x: 10.782472, y: 10.782472, z: 10.782472}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 1556394645
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 12eab987c14f1b5418c437f3b2b1dd6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1685b8125bd06ef44b478010e1068c5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4047619, y: 0.35714287}
+  m_Size: {x: 0.6, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -131,6 +132,27 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0033674226, y: -0.004489746}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.15908091
+--- !u!95 &7872677421381167144
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156411160419098282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a28f6f8c3e27b3c45886151f6b81072d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

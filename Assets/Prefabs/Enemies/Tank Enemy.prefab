@@ -249,4 +249,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87e4bbacf218f94a9b4b8b69a97d3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceOfHealthDrop: 0.25
+  chanceOfHealthDrop: 0.2
