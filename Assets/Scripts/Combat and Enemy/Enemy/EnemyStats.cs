@@ -7,11 +7,18 @@ public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
 
+    private Animator animator;
+
 
     //CURRENT stats
     float currentMoveSpeed;
     float currentHealth;
     float currentDamage;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Awake()
     {
@@ -33,12 +40,10 @@ public class EnemyStats : MonoBehaviour
 
     public void Kill()
     {
+        
         Destroy(gameObject);
-
-        if(currentHealth == 0)
-        {
-            OnDied.Invoke();
-        }
+        OnDied.Invoke();
+        
     }
 
     public UnityEvent OnDied;

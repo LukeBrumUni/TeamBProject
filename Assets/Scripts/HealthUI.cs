@@ -34,17 +34,17 @@ public class HealthUI : MonoBehaviour
 
     void Update()
     {
-        clampedHealth = Mathf.Ceil(playerStats.currentHealth);
+        clampedHealth = Mathf.Ceil(playerStats.currentHealth); // Clamp the health value and assign it
 
         if (playerStats != null && healthText != null)
         {
-            healthText.text = "Health: " + clampedHealth;
+            healthText.text = "Health: " + clampedHealth; // display the clamped health
 
             sliderHealth.value = Mathf.Ceil(playerStats.currentHealth);
 
             if (clampedHealth <= 0)
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // if health = 0, destroy object
             }
         }
     }
