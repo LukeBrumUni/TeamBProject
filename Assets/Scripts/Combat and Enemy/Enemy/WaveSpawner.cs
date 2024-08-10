@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -16,9 +18,13 @@ public class WaveSpawner : MonoBehaviour
     private float spawnTimer;
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
+    [Header("Wave")]
+    public Text liveWaveCounterDisplay;
+
     void Start()
     {
         GenerateWave();
+        LiveWaveCounterUI(); //TEST
     }
 
     void FixedUpdate()
@@ -56,8 +62,9 @@ public class WaveSpawner : MonoBehaviour
         if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
         {
             currWave++;
-            StateManager.instance.WaveCounterUI(currWave);
+            StateManager.instance.FinalWaveCounterUI(currWave);
             GenerateWave();
+            LiveWaveCounterUI();
         }
     }
 
@@ -90,6 +97,15 @@ public class WaveSpawner : MonoBehaviour
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
     }
+
+    private void LiveWaveCounterUI()
+    {
+        if (liveWaveCounterDisplay != null)
+        {
+            liveWaveCounterDisplay.text = currWave.ToString();
+        }
+    }
+
 }
 
 [System.Serializable]

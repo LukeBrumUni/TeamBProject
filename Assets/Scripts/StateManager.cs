@@ -27,8 +27,7 @@ public class StateManager : MonoBehaviour
     public GameObject gameoverScreen;
 
     [Header("Wave")]
-    public Text pauseWaveCounterDisplay;
-    public Text waveCounterDisplay;
+    public Text finalWaveCounterDisplay;
 
     void Awake()
     {
@@ -100,7 +99,6 @@ public class StateManager : MonoBehaviour
             previousState = currentState;
             currentState = GameState.Paused;
             Time.timeScale = 0f;
-            PauseWaveCounterUI();
             pauseScreen.SetActive(true);
         }
     }
@@ -134,15 +132,8 @@ public class StateManager : MonoBehaviour
         ChangeState(GameState.GameOver);
     }
 
-    private void PauseWaveCounterUI()
+    public void FinalWaveCounterUI(int waveCounterData)
     {
-        if (pauseWaveCounterDisplay != null)
-        {
-            pauseWaveCounterDisplay.text = waveCounterDisplay.text;
-        }
-    }
-    public void WaveCounterUI(int waveCounterData)
-    {
-        waveCounterDisplay.text = waveCounterData.ToString();
+        finalWaveCounterDisplay.text = waveCounterData.ToString();
     }
 }

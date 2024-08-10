@@ -13787,7 +13787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437315943}
   m_Layer: 5
-  m_Name: Pause Wave Counter
+  m_Name: Wave Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13800,14 +13800,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437315942}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 708621218}
   - {fileID: 1682456456}
-  m_Father: {fileID: 988464244}
+  m_Father: {fileID: 1879536489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15928,7 +15928,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708621217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15937,7 +15937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -618, y: 163}
+  m_AnchoredPosition: {x: -94, y: 483}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708621219
@@ -16603,7 +16603,6 @@ RectTransform:
   - {fileID: 820507623}
   - {fileID: 1240921778}
   - {fileID: 697117022}
-  - {fileID: 437315943}
   m_Father: {fileID: 1390221945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17721,8 +17720,7 @@ MonoBehaviour:
   previousState: 0
   pauseScreen: {fileID: 988464243}
   gameoverScreen: {fileID: 1187105040}
-  pauseWaveCounterDisplay: {fileID: 1682456454}
-  waveCounterDisplay: {fileID: 1923342182}
+  finalWaveCounterDisplay: {fileID: 1923342182}
 --- !u!4 &1243540181
 Transform:
   m_ObjectHideFlags: 0
@@ -28343,7 +28341,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682456453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28352,7 +28350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227, y: 163}
+  m_AnchoredPosition: {x: 297, y: 482.99997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1753767869
@@ -28714,6 +28712,8 @@ MonoBehaviour:
   spawnIndex: 0
   waveDuration: 20
   spawnedEnemies: []
+  liveWaveCounterDisplay: {fileID: 1682456454}
+  UIWaveCounterDisplay: {fileID: 1682456454}
 --- !u!4 &1863419936
 Transform:
   m_ObjectHideFlags: 0
@@ -28837,6 +28837,7 @@ RectTransform:
   - {fileID: 1921734451}
   - {fileID: 1301062435}
   - {fileID: 1390221945}
+  - {fileID: 437315943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

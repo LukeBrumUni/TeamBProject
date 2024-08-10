@@ -138,7 +138,7 @@ public class PlayerStats : MonoBehaviour
     {
         if(!StateManager.instance.isGameOver)
         {
-            StateManager.instance.WaveCounterUI(waveSpawner.currWave);
+            StateManager.instance.FinalWaveCounterUI(waveSpawner.currWave);
             StateManager.instance.GameOver();
         }
     }
