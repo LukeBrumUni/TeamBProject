@@ -56,6 +56,7 @@ public class WaveSpawner : MonoBehaviour
         if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
         {
             currWave++;
+            StateManager.instance.WaveCounterUI(currWave);
             GenerateWave();
         }
     }

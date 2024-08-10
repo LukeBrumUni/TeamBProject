@@ -42,12 +42,14 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityDuration;
     float invincibilityTimer;
     bool isInvincible;
-    public Color flashColor = Color.blue; // colour to flash when invinc //TEST
-    public float flashDuration = 1.7f; //TEST
+    public Color flashColor = Color.blue; // colour to flash when invinc -- REMOVE IF YOU WANT TO DO THIS WITH THE SPRITE!!!!! (putting in caps so i dont forget this time hehe)
+    public float flashDuration = 1.7f;
     public float recoveryDelay = 10f;
     public float recoveryRate = 1f;
     private bool isDamaged = false;
     private Coroutine recoveryCoroutine;
+    private WaveSpawner waveSpawner;
+
 
     void Awake()
     {
@@ -67,14 +69,15 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        originalColor = spriteRenderer.color; //TEST
+        originalColor = spriteRenderer.color;
+        waveSpawner = FindObjectOfType<WaveSpawner>();
     }
 
     void Update()
     {
         if (invincibilityTimer > 0)
         {
-            StartCoroutine(FlashBlue()); //TEST
+            StartCoroutine(FlashBlue());
             invincibilityTimer -= Time.deltaTime;
         }
         //If the invincibility timer has reached 0, set the invincibility flag to false
@@ -135,6 +138,7 @@ public class PlayerStats : MonoBehaviour
     {
         if(!StateManager.instance.isGameOver)
         {
+            StateManager.instance.WaveCounterUI(waveSpawner.currWave);
             StateManager.instance.GameOver();
         }
     }

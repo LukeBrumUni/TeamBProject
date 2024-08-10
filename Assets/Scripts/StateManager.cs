@@ -16,6 +16,7 @@ public class StateManager : MonoBehaviour
         Paused,
         GameOver
     }
+
     public bool isPaused = false;
     public bool isGameOver = false;
     public GameState currentState;
@@ -25,18 +26,21 @@ public class StateManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject gameoverScreen;
 
+    [Header("Wave")]
+    public Text pauseWaveCounterDisplay;
+    public Text waveCounterDisplay;
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        DisableScreens(); //keep this for gameover screen in final product, but needs to be fixed cus dontdestroyonload is bad
+        DisableScreens();
     }
 
     public void ReloadCurrentScene()
@@ -96,6 +100,7 @@ public class StateManager : MonoBehaviour
             previousState = currentState;
             currentState = GameState.Paused;
             Time.timeScale = 0f;
+            PauseWaveCounterUI();
             pauseScreen.SetActive(true);
         }
     }
@@ -122,10 +127,22 @@ public class StateManager : MonoBehaviour
         gameoverScreen.SetActive(false);
 
     }
+
     public void GameOver()
     {
         gameoverScreen.SetActive(true);
         ChangeState(GameState.GameOver);
     }
 
+    private void PauseWaveCounterUI()
+    {
+        if (pauseWaveCounterDisplay != null)
+        {
+            pauseWaveCounterDisplay.text = waveCounterDisplay.text;
+        }
+    }
+    public void WaveCounterUI(int waveCounterData)
+    {
+        waveCounterDisplay.text = waveCounterData.ToString();
+    }
 }
