@@ -40,10 +40,8 @@ public class EnemyStats : MonoBehaviour
 
     public void Kill()
     {
-        
-        Destroy(gameObject);
         OnDied.Invoke();
-        
+        Destroy(gameObject, 0.5f);
     }
 
     public UnityEvent OnDied;
