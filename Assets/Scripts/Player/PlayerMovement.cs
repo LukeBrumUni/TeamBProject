@@ -54,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
+        animator.SetFloat("xVelocity", moveX);
+        animator.SetFloat("yVelocity", moveY);
+        animator.SetFloat("Speed", moveDir.sqrMagnitude);
+
         moveDir = new Vector2(moveX, moveY).normalized;
 
         if (moveDir.x != 0)
@@ -91,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.velocity = new Vector2(moveDir.x * player.currentMoveSpeed, moveDir.y * player.currentMoveSpeed);
-        animator.SetFloat("xVelocity", rb.velocity.magnitude); // use Math.Abs(rb.velocity.x) or .y if wanting to do directional sprites
+       // animator.SetFloat("xVelocity", rb.velocity.magnitude); // use Math.Abs(rb.velocity.x) or .y if wanting to do directional sprites
     }
 
     public void Flip()
